@@ -1,4 +1,4 @@
-FROM docker.io/node:12-buster-slim as builder
+FROM docker.io/node:12-buster-slim AS builder
 LABEL author="Devin Matte <matted@csh.rit.edu>"
 
 WORKDIR /usr/src/schedule
@@ -14,7 +14,8 @@ RUN npm run-script build
 FROM docker.io/php:7.3-apache
 LABEL author="Devin Matte <matted@csh.rit.edu>"
 
-RUN echo "deb-src http://archive.debian.org/debian buster main" >> /etc/apt/sources.list
+RUN sed -i '/security.debian.org\/debian-security/d' /etc/apt/sources.list && \
+    echo "deb-src http://archive.debian.org/debian buster main" >> /etc/apt/sources.list
 
 RUN apt-get -yq update && \
     apt-get -yq install \
