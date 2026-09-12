@@ -45,12 +45,12 @@ BEGIN
       UPDATE courses AS c
           SET c.title = p_title, c.description = p_description, c.credits = p_credits, c.prerequisites = p_prerequisites, c.typically_offered = p_typically_offered, c.contact_hours = p_contact_hours
           WHERE c.department = v_department AND course = p_course AND quarter = p_quarter;
-      SELECT "updated" AS action;
+      SELECT 'updated' AS action;
   ELSE
       -- Course doesn't exist, so insert it
       INSERT INTO courses (quarter, department, course, title, description, credits, prerequisites, typically_offered, contact_hours)
           VALUES(p_quarter, v_department, p_course, p_title, p_description, p_credits, p_prerequisites, p_typically_offered, p_contact_hours);
-      SELECT "inserted" AS action;
+      SELECT 'inserted' AS action;
   END IF;
 
   -- Return the id of the course
