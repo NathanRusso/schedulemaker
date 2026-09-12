@@ -270,7 +270,7 @@ if (!mysqli_query($dbConn, $departmentQuery)) {
 }
 $departmentsProc = mysqli_affected_rows($dbConn);
 // Grab each COURSE from the classes table
-$courseQuery = "SELECT strm, subject, units, acad_org, catalog_nbr, descr, course_descrlong, prereqs, typ_offr, ctc_hrs";
+$courseQuery = "SELECT strm, subject, units, acad_org, catalog_nbr, descr, course_descrlong, prereqs, typ_offr, ctc_hrs, ";
 $courseQuery .= " crse_id, crse_offer_nbr, session_code";
 $courseQuery .= " FROM classes WHERE strm < 20130 GROUP BY crse_id, strm, session_code";
 $parser->debug("... Updating courses\n0%", false);
