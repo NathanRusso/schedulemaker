@@ -269,6 +269,7 @@ if (!mysqli_query($dbConn, $departmentQuery)) {
     $failures++;
 }
 $departmentsProc = mysqli_affected_rows($dbConn);
+
 // Grab each COURSE from the classes table
 $courseQuery = "SELECT strm, subject, units, acad_org, catalog_nbr, descr, course_descrlong, prereqs, typ_offr, ctc_hrs, ";
 $courseQuery .= " crse_id, crse_offer_nbr, session_code";
